@@ -98,8 +98,8 @@ fun MyApp(modifier: Modifier = Modifier) {
             unselectedIcon = Icons.Outlined.Home,
             hasBadge = false,
             messages = 1
-        ),NavItemState(
-            title = "Institute",
+        ), NavItemState(
+            title = "Training",
             selectedIcon = Icons.Filled.ShoppingCart,
             unselectedIcon = Icons.Outlined.ShoppingCart,
             hasBadge = false,
@@ -130,7 +130,7 @@ fun MyApp(modifier: Modifier = Modifier) {
                 modifier
                     .padding(10.dp)
                     .clip(RoundedCornerShape(20.dp)),
-                containerColor = Color(0xFFF3DB29)
+                containerColor = Color(0xFFB7E2E9)
             ) {
                 items.forEachIndexed { index, item ->
 
@@ -158,7 +158,7 @@ fun MyApp(modifier: Modifier = Modifier) {
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Color(0xFF552A27),
                             selectedTextColor = Color(0xFF64211F),
-                            indicatorColor = Color(0xFFE0655D)
+                            indicatorColor = Color(0xFF4284D5)
                         )
                     )
                 }
@@ -182,19 +182,27 @@ fun MyApp(modifier: Modifier = Modifier) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = items[bottomNavState].title, fontSize = 44.sp, fontWeight = FontWeight.Bold)
-            Card {
-                Text(text = "this is sample card ")
+
+            when (bottomNavState) {
+                0 -> HomeScreen()
+                1 -> InstituteScreen()
+                2 -> JobScreen()
+                3 -> ProfileScreen()
+
+//            Text(text = items[bottomNavState].title, fontSize = 44.sp, fontWeight = FontWeight.Bold)
+//            Card {
+//                Text(text = "this is sample card ")
+//            }
             }
         }
     }
-
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun GreetingPreview() {
-   Learning_academyTheme {
+fun MyAppPreview() {
+    Learning_academyTheme {
         MyApp()
     }
+    
 }
